@@ -61,6 +61,23 @@ export const UploadPage = () => {
   
   }
 
+  const uploadhandler =()=>{
+    fetch('http://localhost:3500/api_upload',{
+      method:"POST",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        image:fileDataURL
+      })
+    }).then((resp)=>resp.json()).then((data)=>{
+      console.log(data)
+    })
+
+  }
+
+  
+
 
  
   return (
@@ -86,7 +103,7 @@ export const UploadPage = () => {
               
                 <img className='show_imgcontent'  src={fileDataURL}></img>
                 <div className='btn-content'>
-                <button className='btn-innercontent'>Start</button></div>
+                <button className='btn-innercontent' onClick={uploadhandler}>Start</button></div>
             </div>:<div></div>}
           </div>
         </div>
